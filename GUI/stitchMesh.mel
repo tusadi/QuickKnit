@@ -33,7 +33,7 @@ frameLayout -label "1. Select face loops:" -bv true -w 500 -collapsable true;
 setParent..; 
 
 //Frame for Tessellation
-frameLayout -label ".2 Tessellation" -bv true -w 500 -collapsable true;
+frameLayout -label "2. Tessellation" -bv true -w 500 -collapsable true;
 text -label "Define the amount of tessellation for each face \n and press the Tessellate button" -align "center";
 float $tessellationAmount = `floatSliderGrp -label "Tessellation Amount" -field true -minValue 0 -maxValue 10 -fieldMinValue 0 -fieldMaxValue 10 -value 4 tessellationVal `;
     button -width 20 -label "Tessellate" -command "Test";

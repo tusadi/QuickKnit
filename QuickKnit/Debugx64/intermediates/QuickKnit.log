@@ -1,0 +1,12 @@
+﻿  PluginMain.cpp
+  QKCmd.cpp
+  Generating Code...
+c:\users\psire\documents\cis 660\quickknit\quickknit\quickknit\pluginmain.cpp(15): warning C4715: 'initializePlugin': not all control paths return a value
+c:\users\psire\documents\cis 660\quickknit\quickknit\quickknit\pluginmain.cpp(27): warning C4715: 'uninitializePlugin': not all control paths return a value
+LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
+QKCmd.obj : warning LNK4006: DllMain already defined in PluginMain.obj; second definition ignored
+QKCmd.obj : warning LNK4006: "struct HINSTANCE__ * MhInstPlugin" (?MhInstPlugin@@3PEAUHINSTANCE__@@EA) already defined in PluginMain.obj; second definition ignored
+QKCmd.obj : warning LNK4006: MApiVersion already defined in PluginMain.obj; second definition ignored
+     Creating library C:\Users\psire\Documents\CIS 660\QuickKnit\QuickKnit\Debugx64\output\QuickKnit.lib and object C:\Users\psire\Documents\CIS 660\QuickKnit\QuickKnit\Debugx64\output\QuickKnit.exp
+C:\Users\psire\Documents\CIS 660\QuickKnit\QuickKnit\Debugx64\output\QuickKnit.mll : warning LNK4088: image being generated due to /FORCE option; image may not run
+  QuickKnit.vcxproj -> C:\Users\psire\Documents\CIS 660\QuickKnit\QuickKnit\Debugx64\output\QuickKnit.mll
