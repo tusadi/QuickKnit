@@ -1,0 +1,13 @@
+﻿cl : Command line warning D9025: overriding '/EHs' with '/EHa'
+  QKCmd.cpp
+  PluginMain.cpp
+  Generating Code...
+c:\users\psire\onedrive\documents\c++\quickknit\quickknit\pluginmain.cpp(27): warning C4715: 'uninitializePlugin': not all control paths return a value
+c:\users\psire\onedrive\documents\c++\quickknit\quickknit\pluginmain.cpp(15): warning C4715: 'initializePlugin': not all control paths return a value
+LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
+PluginMain.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
+QKCmd.obj : warning LNK4006: MApiVersion already defined in PluginMain.obj; second definition ignored
+     Creating library C:\Users\psire\OneDrive\Documents\C++\QuickKnit\Debug\x64\output\QuickKnit.lib and object C:\Users\psire\OneDrive\Documents\C++\QuickKnit\Debug\x64\output\QuickKnit.exp
+C:\Users\psire\OneDrive\Documents\C++\QuickKnit\Debug\x64\output\QuickKnit.mll : warning LNK4088: image being generated due to /FORCE option; image may not run
+  QuickKnit.vcxproj -> C:\Users\psire\OneDrive\Documents\C++\QuickKnit\Debug\x64\output\QuickKnit.mll
+  QuickKnit.vcxproj -> C:\Users\psire\OneDrive\Documents\C++\QuickKnit\Debug\x64\output\QuickKnit.pdb (Partial PDB)
