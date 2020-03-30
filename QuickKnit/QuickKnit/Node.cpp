@@ -4,7 +4,7 @@
 #include<glm\glm.hpp>
 #include<maya\MItMeshPolygon.h>
 #include<maya\MStateManager.h>
-#include<string>
+
 MTypeId Node::NodeID(0x80000);
 MObject Node::MOBJ_ipMesh;
 MObject Node::MOBJ_opMesh;

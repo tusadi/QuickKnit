@@ -1,6 +1,7 @@
 #include "MayaIncludes.h"
 #include "QKCmd.h"
 #include "Node.h"
+#define NO_WARN_MBCS_MFC_DEPRECATION
 
 MStatus initializePlugin(MObject obj)
 {

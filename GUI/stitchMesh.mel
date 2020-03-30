@@ -13,6 +13,11 @@ proc browse() {
     fileBrowserDialog -m 0 -fc "importImage" -ft "image" -an "Import_Image" -om "Import";
 }
 
+proc spawn() { 
+    
+}
+
+
 
 string $window = `window -title "Call QuickKnit Command" -s false`;
 
@@ -45,14 +50,17 @@ frameLayout -label "3. Pattern Selection" -bv true -w 500 -collapsable true;
 text -label "Define the amount of tessellation for each face" -align "center";
 gridLayout -numberOfColumns 2 -cellWidthHeight 200 200;
      iconTextButton -style "iconAndTextVertical"
-    -image1 "C:/Users/tpura/Desktop/CIS-660/QuickKnit/Icons/A.png" -label "A";
+    -image1 "C:/Users/tpura/Desktop/CIS-660/QuickKnit/Icons/p.png" -label "p" -command "spawn";
 iconTextButton -style "iconAndTextVertical"
-    -image1 "C:/Users/tpura/Desktop/CIS-660/QuickKnit/Icons/B.png" -label "B";
+    -image1 "C:/Users/tpura/Desktop/CIS-660/QuickKnit/Icons/py.png" -label "py" -command "spawn";
 iconTextButton -style "iconAndTextVertical"
-    -image1 "C:/Users/tpura/Desktop/CIS-660/QuickKnit/Icons/B.png" -label "C";
+    -image1 "C:/Users/tpura/Desktop/CIS-660/QuickKnit/Icons/d312p.png" -label "d312p" -command "spawn";
 iconTextButton -style "iconAndTextVertical"
-    -image1 "C:/Users/tpura/Desktop/CIS-660/QuickKnit/Icons/A.png" -label "D";
-
+    -image1 "C:/Users/tpura/Desktop/CIS-660/QuickKnit/Icons/k1y.png" -label "k1y" -command "spawn";
+iconTextButton -style "iconAndTextVertical"
+    -image1 "C:/Users/tpura/Desktop/CIS-660/QuickKnit/Icons/s.png" -label "s" -command "spawn";
+    iconTextButton -style "iconAndTextVertical"
+    -image1 "C:/Users/tpura/Desktop/CIS-660/QuickKnit/Icons/sk.png" -label "sk" -command "spawn";
 setParent..; 
 
 

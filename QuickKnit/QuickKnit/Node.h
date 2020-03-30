@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "MayaIncludes.h"
-#include <string>
+#include <string.h>
 #include <cstdio>
 #define _CRT_SECURE_NO_WARNINGS
 
