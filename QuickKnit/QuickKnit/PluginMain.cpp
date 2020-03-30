@@ -1,9 +1,8 @@
-#include "mayaIncludes.h"
+#include "MayaIncludes.h"
 #include "QKCmd.h"
-#include "glm\glm.hpp"
-#include<vector>
-#include <glm\glm.hpp>
-
+#include "Node.h"
+#include <vector>
+#include<glm\glm.hpp>
 
 MStatus initializePlugin(MObject obj)
 {
@@ -16,6 +15,19 @@ MStatus initializePlugin(MObject obj)
 		status.perror("registerCommand");
 		return status;
 	}
+
+	//Register Node 
+	status = plugin.registerNode("LSystemNode", Node::NodeID, Node::creator, Node::initialize);
+	if (!status) {
+		status.perror("registerNode");
+		return status;
+	}
+
+	// You can run a MEL script from initializePlugin() to auto-register your MEL dialog boxes and menus
+	char buffer[2048];
+	sprintf_s(buffer, 2048, "source \"%s/stitchMesh\";", plugin.loadPath().asChar());
+	MGlobal::executeCommand(buffer, true);
+	return status;
 }
 
 MStatus uninitializePlugin(MObject obj)
@@ -49,12 +61,12 @@ public:
 std::vector<Face> test() {
 	///User defined
 	int nRows = 4;
-	
+
 	std::vector<glm::vec3> verts;
 	std::vector<std::vector<glm::vec3>> rows;
-	
+
 	for (int i = 0; i < nRows + 1; i++) {
-		 
+
 	}
 
 	bool isQuad = false;
@@ -67,7 +79,7 @@ std::vector<Face> test() {
 	///Identify L, R
 	//considering v0, v1 to be edge L and v2-v3 to be edge R
 	//Identify T, B
-	
+
 	//Define vertices
 	for (int i = 0; i < nRows + 1; i++) {
 		///Insert first vertex
@@ -86,7 +98,7 @@ std::vector<Face> test() {
 		//Number of vertices in top row:
 		float dist = glm::distance(verts[0], verts[1]) * 1.0f / nRows;
 		int nCols = glm::distance(verts[0], verts[verts.size()]) / dist;
-		
+
 		glm::vec3 endVert = (i * 1.0f / nRows) * verts[verts.size() - 1] + (1.0f - (i * 1.0f / nRows)) * verts[verts.size() - 2];
 
 		for (int j = 1; j < nCols; j++) {
@@ -97,7 +109,7 @@ std::vector<Face> test() {
 		//Add last vertex
 		rows[i].push_back(endVert);
 	}
-	
+
 	std::vector<Face> faces;
 
 	//Form faces
@@ -108,10 +120,10 @@ std::vector<Face> test() {
 			f.vertices.push_back(rows[i + 1][j]);
 			f.vertices.push_back(rows[i + 1][j + 1]);
 			f.vertices.push_back(rows[i][j + 1]);
-			
+
 			faces.push_back(f);
 		}
 	}
-	
+
 	return faces;
 }
