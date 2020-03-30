@@ -3,7 +3,8 @@
 #include <iostream>
 #include <vector>
 #include "MayaIncludes.h"
-#include <string.h>
+#include <string>
+#include <cstdio>
 #define _CRT_SECURE_NO_WARNINGS
 
 /*This class represents the Stitch Mesh Data structure */
@@ -21,7 +22,6 @@ public:
 	virtual MStatus doIt(const MArgList& args);
 
 	//functions 
-	void Tessellate();
 	void replaceMesh();
 	void relax();
 

@@ -1,6 +1,10 @@
 #pragma once
 #include "Node.h"
-
+#include <vector>
+#include<glm\glm.hpp>
+#include<maya\MItMeshPolygon.h>
+#include<maya\MStateManager.h>
+#include<string>
 MTypeId Node::NodeID(0x80000);
 MObject Node::MOBJ_ipMesh;
 MObject Node::MOBJ_opMesh;
@@ -11,6 +15,21 @@ MObject Node::MOBJ_opMeshName;
 Node::~Node()
 {}
 
+
+
+class Face {
+public:
+	///In anti-clockwise order
+	std::vector<glm::vec3> vertices;
+	bool isLeftSided = false;
+
+	Face() {};
+	Face(std::vector<glm::vec3> verts) {
+		for (int i = 0; i < verts.size(); i++) {
+			vertices.push_back(verts[i]);
+		}
+	}
+};
 
 void* Node::creator()
 {
@@ -93,7 +112,7 @@ MStatus Node::compute(const MPlug& plug, MDataBlock& data)
 			// split the name of the selection to
 			// get the edge index
 			char* pch;
-			pch = strtok(selectedName, ".[]");
+			pch = strtok(selectedName, ".[]"); 
 			std::vector<char*> selectedNameTokens;
 			while (pch != NULL) {
 				selectedNameTokens.push_back(pch);
@@ -115,11 +134,18 @@ MStatus Node::compute(const MPlug& plug, MDataBlock& data)
 
 		//To draw some geometry on the screen
 		MGlobal::executeCommand("circle - c 0 0 0 - nr 0 1 0 - sw 360 - r 1");
+		
+		MIntArray vertices;
 
-		for (int i = 0; i < ipMesh->numPolygons(); i++)  //in case you want to loop over the faces of the input mesh, use this loop
-		{
+		//for (int i = 0; i < ipMesh->numPolygons(); i++)  //in case you want to loop over the faces of the input mesh, use this loop
+		//{
 			//numPolygons is the number of faces in the input mesh 
-		}
+			
+		//}
+
+		//2) Tessellate		///Done
+		getTessellatedFaces(ipMesh->object);
+		
 
 		//FYI (Some functions I came across that might be helpful)
 		//1)addPolygon is a fn that adds a new polygon to this polygonal mesh. Return an index of the created polygon.
@@ -136,8 +162,6 @@ MStatus Node::compute(const MPlug& plug, MDataBlock& data)
 		//https://help.autodesk.com/view/MAYAUL/2016/ENU/?guid=__files_Polygon_API_The_five_basic_polygonal_API_classes_htm
 		//for more info 
 
-			//2) Tessellate 
-		Tessellate();
 			//3) Edit Faces 
 		replaceMesh();
 			//4) Relax Mesh 
@@ -155,15 +179,139 @@ MStatus Node::doIt(const MArgList& args)
 	return MStatus::kSuccess;
 }
 
-void Node::Tessellate()
+MPointArray vertices;
+float vertArray[4][4];
+std::vector<Face> faces;
+
+///TESSELLATION
+//Face iterator function
+void getTessellatedFaces(MObject mesh)
 {
+	MStatus status;
+	// Reset the faceEdges array
+	//
+	// Initialize a face iterator and function set
+	//
+	MItMeshPolygon faceIter(mesh, &status);
+	//MCheckStatus(status, "MItMeshPolygon constructor failed");
+	MFnMesh meshFn(mesh, &status);
+	//MCheckStatus(status, "MFnMesh constructor failed");
+
+	// Now parse the mesh for the given face and
+	// return the resulting faces
+	//
+	for (; !faceIter.isDone(); faceIter.next())
+	{
+		///Storing vertices of face
+		//faceIter.getVertices(vertices);
+		faceIter.getPoints(vertices, MSpace::kWorld);
+		vertices.get(vertArray);
+		generateFaces();
+	}
+	//return status;
+}
+
+//Face generator function
+void generateFaces() {
+	///User defined
+	int nRows = 4;
+
+	std::vector<glm::vec3> verts;
+	std::vector<std::vector<glm::vec3>> rows;
+
+	//Storing points in vertex
+	for (int i = 0; i < sizeof(vertArray[0])/sizeof(vertArray[0][0]); i++) {
+		verts.push_back(glm::vec3(vertArray[i][0], vertArray[i][1], vertArray[i][2]));
+	}
+
+	bool isQuad = false;
+	bool isLeftSided = false;
+
+	if (verts.size() == 4) {
+		isQuad = true;
+	}
+
+	///Identify L, R
+	//considering v0, v1 to be edge L and v2-v3 to be edge R
+	//Identify T, B
+
+	//Define vertices
+	for (int i = 0; i < nRows + 1; i++) {
+		///Insert first vertex
+		if (i == 0) {
+			rows[0].push_back(verts[0]);
+		}
+		else if (i == nRows) {
+			rows[i].push_back(verts[1]);
+		}
+		else {
+			glm::vec3 newVert = (i * 1.0f / nRows) * verts[0] + (1.0f - (i * 1.0f / nRows)) * verts[1];
+			rows[i].push_back(newVert);
+		}
+
+		///Add intermediate vertices
+		//Number of vertices in top row:
+		float dist = glm::distance(verts[0], verts[1]) * 1.0f / nRows;
+		int nCols = glm::distance(verts[0], verts[verts.size()]) / dist;
+
+		glm::vec3 endVert = (i * 1.0f / nRows) * verts[verts.size() - 1] + (1.0f - (i * 1.0f / nRows)) * verts[verts.size() - 2];
+
+		for (int j = 1; j < nCols; j++) {
+			glm::vec3 vertex = (j * 1.0f / nCols) * verts[i][0] + (1 - (j * 1.0f / nCols)) * endVert;
+			rows[i].push_back(vertex);
+		}
+
+		//Add last vertex
+		rows[i].push_back(endVert);
+	}
+
+
+	//Form faces
+	for (int i = 0; i < nRows - 1; i++) {
+		for (int j = 0; j < rows[0].size() - 1; j++) {
+			Face f;
+			f.vertices.push_back(rows[i][j]);
+			f.vertices.push_back(rows[i + 1][j]);
+			f.vertices.push_back(rows[i + 1][j + 1]);
+			f.vertices.push_back(rows[i][j + 1]);
+
+			faces.push_back(f);
+		}
+	}
 
 }
+
+
 void Node::replaceMesh()
 {
+	int x = 5;
+	for (int i = 0; i < faces.size(); i++) {
 
+		MGlobal::executeCommand("file -import -type \"OBJ\"  -ignoreVersion -rpr \"stitchLoop\" -options \"mo = 1\" \"C: / Users / tpura / Desktop / CIS - 660 / QuickKnit / Knit - pattern units / stitchLoop.obj\";");
+		MGlobal::executeCommand("select -r polySurface5;");
+		MGlobal::executeCommand("duplicate -rr;");
+		glm::vec3 median = glm::vec3(0);
+		for (int j = 0; j < faces[i].vertices.size(); j++) {
+			median += faces[i].vertices[j];
+		}
+
+		median *= 1.0f / faces[i].vertices.size();
+		MString s1 = "move -r ";
+		MString s5 = ",";
+		MString s6 = ";";
+		s1 += (median[0]);
+		s1 += s5;	//,
+		s1 += (median[1]);
+		s1 += s5;	//,
+		s1 += (median[2]);
+		s1 += s6;	//;
+		MGlobal::executeCommand(s1);
+	}
 }
 void Node::relax()
 {
 
 }
+
+
+
