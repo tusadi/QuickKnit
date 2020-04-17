@@ -36,10 +36,9 @@ void* Node::creator()
 {
 	Node *node = new Node();
 
-	//Node* node = new Node();
-	//node->MOBJ_ipMesh = MFnMeshData().create();
-	//node->MOBJ_opMesh = MFnMeshData().create();
-	//return node;
+	node->MOBJ_ipMesh = MFnMeshData().create();
+	node->MOBJ_opMesh = MFnMeshData().create();
+	return node;
 
 }
 

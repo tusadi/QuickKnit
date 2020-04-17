@@ -1,93 +1,18 @@
-﻿cl : Command line warning D9025: overriding '/EHs' with '/EHa'
-  PluginMain.cpp
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\pluginmain.cpp(26): warning C4474: 'sprintf_s' : too many arguments passed for format string
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\pluginmain.cpp(26): note: placeholders and their parameters expect 0 variadic arguments, but 1 were provided
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppClean.targets(76,5): warning : Access to the path 'c:\users\psire\documents\quickknit\quickknit\debug\x64\output\quickknit.mll' is denied.
+cl : Command line warning D9025: overriding '/EHs' with '/EHa'
+  MeshFace.cpp
   Node.cpp
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(45): error C2059: syntax error: '}'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(47): error C2143: syntax error: missing ';' before 'Node::initialize'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(47): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(48): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(48): error C2556: 'int Node::initialize(void)': overloaded function differs only by return type from 'Autodesk::Maya::OpenMaya20190000::MStatus Node::initialize(void)'
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.h(21): note: see declaration of 'Node::initialize'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(47): error C2371: 'Node::initialize': redefinition; different basic types
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.h(21): note: see declaration of 'Node::initialize'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(49): error C2039: 'MStatus': is not a member of 'Node'
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.h(11): note: see declaration of 'Node'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(49): error C2146: syntax error: missing ';' before identifier 'returnStatus'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(49): error C2039: 'returnStatus': is not a member of 'Node'
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.h(11): note: see declaration of 'Node'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(50): error C2039: 'MFnTypedAttribute': is not a member of 'Node'
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.h(11): note: see declaration of 'Node'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(50): error C2146: syntax error: missing ';' before identifier 'tAttr'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(50): error C2039: 'tAttr': is not a member of 'Node'
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.h(11): note: see declaration of 'Node'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(51): error C2039: 'MFnNumericAttribute': is not a member of 'Node'
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.h(11): note: see declaration of 'Node'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(51): error C2146: syntax error: missing ';' before identifier 'nAttr'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(51): error C2039: 'nAttr': is not a member of 'Node'
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.h(11): note: see declaration of 'Node'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(54): error C2039: 'nAttr': is not a member of 'Node'
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.h(11): note: see declaration of 'Node'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(54): error C2039: 'create': is not a member of 'Node'
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.h(11): note: see declaration of 'Node'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(54): error C2065: 'returnStatus': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(56): error C2065: 'nAttr': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(56): error C2228: left of '.setMin' must have class/struct/union
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(56): note: type is 'unknown-type'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(57): error C2065: 'nAttr': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(57): error C2228: left of '.setMax' must have class/struct/union
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(57): note: type is 'unknown-type'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(58): error C2065: 'nAttr': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(58): error C2228: left of '.setWritable' must have class/struct/union
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(58): note: type is 'unknown-type'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(61): error C2065: 'tAttr': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(61): error C2228: left of '.create' must have class/struct/union
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(61): note: type is 'unknown-type'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(61): error C2065: 'returnStatus': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(65): error C2065: 'tAttr': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(65): error C2228: left of '.create' must have class/struct/union
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(65): note: type is 'unknown-type'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(65): error C2065: 'returnStatus': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(67): error C2065: 'tAttr': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(67): error C2228: left of '.setStorable' must have class/struct/union
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(67): note: type is 'unknown-type'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(70): error C2065: 'tAttr': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(70): error C2228: left of '.create' must have class/struct/union
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(70): note: type is 'unknown-type'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(70): error C2065: 'returnStatus': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(74): error C2065: 'tAttr': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(74): error C2228: left of '.create' must have class/struct/union
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(74): note: type is 'unknown-type'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(74): error C2065: 'returnStatus': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(78): error C2065: 'returnStatus': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(79): error C2065: 'returnStatus': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(80): error C2065: 'returnStatus': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(81): error C2065: 'returnStatus': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(82): error C2065: 'returnStatus': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(86): error C2065: 'returnStatus': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(93): error C2143: syntax error: missing ';' before 'Node::compute'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(93): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(93): error C2086: 'int MStatus': redefinition
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(47): note: see declaration of 'MStatus'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(94): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(94): error C2556: 'int Node::compute(const Autodesk::Maya::OpenMaya20190000::MPlug &,Autodesk::Maya::OpenMaya20190000::MDataBlock &)': overloaded function differs only by return type from 'Autodesk::Maya::OpenMaya20190000::MStatus Node::compute(const Autodesk::Maya::OpenMaya20190000::MPlug &,Autodesk::Maya::OpenMaya20190000::MDataBlock &)'
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.h(19): note: see declaration of 'Node::compute'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(93): error C2371: 'Node::compute': redefinition; different basic types
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.h(19): note: see declaration of 'Node::compute'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(125): warning C4018: '<': signed/unsigned mismatch
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(184): error C2143: syntax error: missing ';' before 'Node::doIt'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(184): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(184): error C2086: 'int MStatus': redefinition
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(47): note: see declaration of 'MStatus'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(185): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(185): error C2556: 'int Node::doIt(const Autodesk::Maya::OpenMaya20190000::MArgList &)': overloaded function differs only by return type from 'Autodesk::Maya::OpenMaya20190000::MStatus Node::doIt(const Autodesk::Maya::OpenMaya20190000::MArgList &)'
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.h(22): note: see declaration of 'Node::doIt'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(184): error C2371: 'Node::doIt': redefinition; different basic types
-  c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.h(22): note: see declaration of 'Node::doIt'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(236): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(269): error C2146: syntax error: missing ';' before identifier 'status'
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(269): error C2065: 'status': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(273): error C2065: 'status': undeclared identifier
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\node.cpp(274): error C2065: 'status': undeclared identifier
+c:\users\psire\documents\quickknit\quickknit\quickknit\node.cpp(123): warning C4018: '<': signed/unsigned mismatch
+c:\users\psire\documents\quickknit\quickknit\quickknit\node.cpp(234): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  PluginMain.cpp
+  QKCmd.cpp
+  Relaxation.cpp
+  tessellate.cpp
   Generating Code...
-c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\pluginmain.cpp(42): warning C4715: 'uninitializePlugin': not all control paths return a value
+c:\users\psire\documents\quickknit\quickknit\quickknit\pluginmain.cpp(42): warning C4715: 'uninitializePlugin': not all control paths return a value
+LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
+LINK : fatal error LNK1104: cannot open file 'C:\Users\psire\Documents\QuickKnit\QuickKnit\Debug\x64\output\QuickKnit.mll'

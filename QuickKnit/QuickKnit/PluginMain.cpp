@@ -23,7 +23,7 @@ MStatus initializePlugin(MObject obj)
 
 	// You can run a MEL script from initializePlugin() to auto-register your MEL dialog boxes and menus
 	char buffer[2048];
-	sprintf_s(buffer, 2048, "source \"C:/Users/tpura/Desktop/CIS-660/QuickKnit/GUI/stitchMesh.mel\";", plugin.loadPath().asChar());
+	sprintf_s(buffer, 2048, "source \"%s/stitchMesh\";", plugin.loadPath().asChar());
 	MGlobal::executeCommand(buffer, true);
 
 	return status;

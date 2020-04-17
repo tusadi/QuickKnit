@@ -1,6 +1,4 @@
-#ifndef GLM_CIS461
-#    error "CIS461 modification: Do not use GLM directly."
-#endif
+
 ///////////////////////////////////////////////////////////////////////////////////
 /// OpenGL Mathematics (glm.g-truc.net)
 ///
