@@ -1,7 +1,6 @@
 #include "MeshFace.h"
 
 
-
 MeshFace::MeshFace()
 {
 }

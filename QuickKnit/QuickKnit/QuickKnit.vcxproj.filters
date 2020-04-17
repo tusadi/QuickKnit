@@ -27,6 +27,12 @@
     <ClCompile Include="MeshFace.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tessellate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Relaxation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="QKCmd.h">
@@ -42,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MeshFace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tessellate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

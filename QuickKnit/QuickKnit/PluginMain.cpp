@@ -5,33 +5,33 @@
 
 MStatus initializePlugin(MObject obj)
 {
-	MStatus   status = MStatus::kSuccess;
+	MStatus  status = MStatus::kSuccess;
 	MFnPlugin plugin(obj, "MyPlugin", "1.0", "Any");
 
 	// Register Command
-	status = plugin.registerCommand("QuickKnit", QKCmd::creator, QKCmd::newSyntax);
+	status = plugin.registerCommand("QuickKnit", Node::creator);
 	if (!status) {
 		status.perror("registerCommand");
 		return status;
 	}
 
-	//Register Node 
-	status = plugin.registerNode("LSystemNode", Node::NodeID, Node::creator, Node::initialize);
-	if (!status) {
-		status.perror("registerNode");
-		return status;
-	}
+	// Remove existing menu if it still exists
+	MGlobal::executeCommand("if(`menu -ex StitchMeshesMenu`) deleteUI -m StitchMeshesMenu");
+
+	// Add menu to main Maya window
+	MGlobal::executeCommand("menu -l \"Stitch Meshes\" -p MayaWindow StitchMeshesMenu");
 
 	// You can run a MEL script from initializePlugin() to auto-register your MEL dialog boxes and menus
 	char buffer[2048];
-	sprintf_s(buffer, 2048, "source \"%s/stitchMesh\";", plugin.loadPath().asChar());
+	sprintf_s(buffer, 2048, "source \"C:/Users/tpura/Desktop/CIS-660/QuickKnit/GUI/stitchMesh.mel\";", plugin.loadPath().asChar());
 	MGlobal::executeCommand(buffer, true);
+
 	return status;
 }
 
 MStatus uninitializePlugin(MObject obj)
 {
-	MStatus   status = MStatus::kSuccess;
+	MStatus status = MStatus::kSuccess;
 	MFnPlugin plugin(obj);
 
 	status = plugin.deregisterCommand("QuickKnit");

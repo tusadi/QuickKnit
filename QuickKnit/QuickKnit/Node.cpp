@@ -31,12 +31,16 @@ public:
 	}
 };
 
+
 void* Node::creator()
 {
-	Node* node = new Node();
-	node->MOBJ_ipMesh = MFnMeshData().create();
-	node->MOBJ_opMesh = MFnMeshData().create();
-	return node;
+	Node *node = new Node();
+
+	//Node* node = new Node();
+	//node->MOBJ_ipMesh = MFnMeshData().create();
+	//node->MOBJ_opMesh = MFnMeshData().create();
+	//return node;
+
 }
 
 MStatus	Node::initialize()
@@ -51,16 +55,20 @@ MStatus	Node::initialize()
 	nAttr.setMin(1.0);
 	nAttr.setMax(10.0);
 	nAttr.setWritable(true);
+
 	//2)Input Mesh 
 	Node::MOBJ_ipMesh = tAttr.create("inputMesh", "inMesh", MFnData::kMesh, &returnStatus);
 	//McheckErr(returnStatus, "ERROR creating Node::MOBJ_ipMesh attribute\n");
+
 	//3)Output Mesh 
 	Node::MOBJ_opMesh = tAttr.create("outputMesh", "outMesh", MFnData::kMesh, &returnStatus);
 	//McheckErr(returnStatus, "ERROR creating Node::MOBJ_opMesh attribute\n");
 	tAttr.setStorable(false);
+
 	//4)Input Mesh Name 
 	Node::MOBJ_ipMeshName = tAttr.create("inputMeshName", "inMeshName", MFnData::kString, &returnStatus);
 	//McheckErr(returnStatus, "ERROR creating Node::MOBJ_ipMeshName attribute\n");	
+
 	//5)Output Mesh Name 
 	Node::MOBJ_opMeshName = tAttr.create("outputMeshName", "outMeshName", MFnData::kString, &returnStatus);
 	//McheckErr(returnStatus, "ERROR creating Node::MOBJ_opMeshName attribute\n");
@@ -72,6 +80,8 @@ MStatus	Node::initialize()
 	returnStatus = attributeAffects(Node::MOBJ_ipMesh, Node::MOBJ_opMesh);
 	returnStatus = addAttribute(Node::MOBJ_opMesh);
 
+	MGlobal::executeCommand("print(\"initalized\");");
+
 	return returnStatus;
 }
 
@@ -81,6 +91,8 @@ MStatus	Node::initialize()
 //Data block is the block containing storage for the node's attributes
 MStatus Node::compute(const MPlug& plug, MDataBlock& data)
 {
+
+
 	if (plug == MOBJ_opMesh)
 	{
 		//Data handles 
@@ -102,8 +114,12 @@ MStatus Node::compute(const MPlug& plug, MDataBlock& data)
 		MGlobal::getActiveSelectionList(selected);  //returns the MObjects selected 
 		MIntArray selectedIndices;                 //to store the indices of selected edges 
 		MStringArray selectedEdges;                //to store the names of the selected edges - parsed to get indices 
-		if (selected.length() == 0)
-			goto p;
+
+		if (selected.length() == 0) {
+			data.setClean(plug);
+			return MStatus::kSuccess;
+		}
+
 		selected.getSelectionStrings(selectedEdges);
 		for (int i = 0; i < selected.length(); i++)
 		{
@@ -124,10 +140,7 @@ MStatus Node::compute(const MPlug& plug, MDataBlock& data)
 				selectedIndices[i] = atoi(selectedNameTokens[2]);
 			}
 		}
-		/* for (int i = 0; i < selectedIndices.length(); i++)
-		{
-		std::cout << selectedIndices[i] << std::endl;
-		} */
+
 		
 		//Delete the current selection 
 		MGlobal::executeCommand("doDelete;"); 
@@ -137,14 +150,8 @@ MStatus Node::compute(const MPlug& plug, MDataBlock& data)
 		
 		MIntArray vertices;
 
-		//for (int i = 0; i < ipMesh->numPolygons(); i++)  //in case you want to loop over the faces of the input mesh, use this loop
-		//{
-			//numPolygons is the number of faces in the input mesh 
-			
-		//}
-
 		//2) Tessellate		///Done
-		getTessellatedFaces(ipMesh->object);
+		getTessellatedFaces(inputMesh);
 		
 
 		//FYI (Some functions I came across that might be helpful)
@@ -166,7 +173,7 @@ MStatus Node::compute(const MPlug& plug, MDataBlock& data)
 		replaceMesh();
 			//4) Relax Mesh 
 		relax();
-	p:
+
 		data.setClean(plug);
 		return MStatus::kSuccess;
 	}
@@ -183,36 +190,9 @@ MPointArray vertices;
 float vertArray[4][4];
 std::vector<Face> faces;
 
-///TESSELLATION
-//Face iterator function
-void getTessellatedFaces(MObject mesh)
-{
-	MStatus status;
-	// Reset the faceEdges array
-	//
-	// Initialize a face iterator and function set
-	//
-	MItMeshPolygon faceIter(mesh, &status);
-	//MCheckStatus(status, "MItMeshPolygon constructor failed");
-	MFnMesh meshFn(mesh, &status);
-	//MCheckStatus(status, "MFnMesh constructor failed");
-
-	// Now parse the mesh for the given face and
-	// return the resulting faces
-	//
-	for (; !faceIter.isDone(); faceIter.next())
-	{
-		///Storing vertices of face
-		//faceIter.getVertices(vertices);
-		faceIter.getPoints(vertices, MSpace::kWorld);
-		vertices.get(vertArray);
-		generateFaces();
-	}
-	//return status;
-}
 
 //Face generator function
-void generateFaces() {
+void Node::generateFaces() {
 	///User defined
 	int nRows = 4;
 
@@ -220,7 +200,7 @@ void generateFaces() {
 	std::vector<std::vector<glm::vec3>> rows;
 
 	//Storing points in vertex
-	for (int i = 0; i < sizeof(vertArray[0])/sizeof(vertArray[0][0]); i++) {
+	for (int i = 0; i < sizeof(vertArray[0]) / sizeof(vertArray[0][0]); i++) {
 		verts.push_back(glm::vec3(vertArray[i][0], vertArray[i][1], vertArray[i][2]));
 	}
 
@@ -281,6 +261,31 @@ void generateFaces() {
 
 }
 
+///TESSELLATION
+//Face iterator function
+void Node::getTessellatedFaces(MObject mesh)
+{
+	MStatus status;
+
+	// Initialize a face iterator and function set
+	//
+	MItMeshPolygon faceIter(mesh, &status);
+	MFnMesh meshFn(mesh, &status);
+
+	// Now parse the mesh for the given face and
+	// return the resulting faces
+	//
+	for (; !faceIter.isDone(); faceIter.next())
+	{
+		///Storing vertices of face
+		//faceIter.getVertices(vertices);
+		faceIter.getPoints(vertices, MSpace::kWorld);
+		vertices.get(vertArray);
+		generateFaces();
+	}
+	//return status;
+}
+
 
 void Node::replaceMesh()
 {
@@ -308,10 +313,9 @@ void Node::replaceMesh()
 		MGlobal::executeCommand(s1);
 	}
 }
+
 void Node::relax()
 {
 
 }
-
-
 

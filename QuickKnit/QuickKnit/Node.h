@@ -23,6 +23,8 @@ public:
 
 	//functions 
 	void replaceMesh();
+	void getTessellatedFaces(MObject);
+	void generateFaces();
 	void relax();
 
 	//Attributes 

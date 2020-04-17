@@ -1,17 +1,28 @@
+proc browse() { 
+    fileBrowserDialog -m 0 -fc "importImage" -ft "image" -an "Import_Image" -om "Import";
+}
+
 global proc int importImage( string $filename, string $fileType )
 {
     file -import $filename;
     return 1;
 }
 
-proc Test(){
-    ConvertSelectionToFaces;
+
+proc convertMesh() {
+    
+}
+
+proc bSelect() {
+        ConvertSelectionToFaces;
+}
+
+proc bDeselect() {
+    select -cl;
 }
 
 
-proc browse() { 
-    fileBrowserDialog -m 0 -fc "importImage" -ft "image" -an "Import_Image" -om "Import";
-}
+
 
 proc spawn() { 
     
@@ -33,8 +44,8 @@ rowColumnLayout -numberOfColumns 1 -columnAttach 1 "left" 0
 //Frame for Face selection
 frameLayout -label "1. Select face loops:" -bv true -w 500 -collapsable true;
     text -label "Select faces in the mesh that you want to convert to stitched pattern. \nPress Add selected button to consider the selected faces for mesh generation or\n Press Clear selection button to reset the selection process." -align "center";
-    button  -label "Add selected" -command "Test";
-    button  -label "Clear selected" -command "Test";
+    button  -label "Add selected" -command "bSelect";
+    button  -label "Clear selected" -command "bDeselect";
 setParent..; 
 
 //Frame for Tessellation
@@ -63,6 +74,20 @@ iconTextButton -style "iconAndTextVertical"
     -image1 "C:/Users/tpura/Desktop/CIS-660/QuickKnit/Icons/sk.png" -label "sk" -command "spawn";
 setParent..; 
 
+proc Test(){
+    //createNode transform -n quickKnit1;
+    //createNode mesh -n quickKnitShape1 -p quickKnit1;
+    //createNode Node -n quickKnitNode1;
+    //connectAttr Node.MOBJ_ipMesh 
+    //connectAttr Node.MOBJ_opMesh quickKnitShape1.inMesh;
+}
 
+
+rowColumnLayout -numberOfColumns 1 -columnAttach 1 "left" 0
+    -columnWidth 1 500;
+    rowLayout -numberOfColumns 2 -adjustableColumn 2 -columnAlign  1 "right"; 
+    text -label "Convert Mesh" -w 400 -al "left";
+    button -width 100 -label "Convert" -command "convertMesh" -al "left"; 
+    setParent..; 
 
 showWindow $window;
