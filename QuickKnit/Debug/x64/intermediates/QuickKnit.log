@@ -1,0 +1,34 @@
+﻿cl : Command line warning D9025: overriding '/EHs' with '/EHa'
+  MeshFace.cpp
+  Node.cpp
+c:\users\psire\documents\quickknit\quickknit\quickknit\node.cpp(123): warning C4018: '<': signed/unsigned mismatch
+c:\users\psire\documents\quickknit\quickknit\quickknit\node.cpp(234): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  PluginMain.cpp
+  QKCmd.cpp
+  Relaxation.cpp
+  tessellate.cpp
+  Generating Code...
+c:\users\psire\documents\quickknit\quickknit\quickknit\pluginmain.cpp(42): warning C4715: 'uninitializePlugin': not all control paths return a value
+LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
+Node.obj : warning LNK4006: DllMain already defined in MeshFace.obj; second definition ignored
+Node.obj : warning LNK4006: "struct HINSTANCE__ * MhInstPlugin" (?MhInstPlugin@@3PEAUHINSTANCE__@@EA) already defined in MeshFace.obj; second definition ignored
+Node.obj : warning LNK4006: MApiVersion already defined in MeshFace.obj; second definition ignored
+PluginMain.obj : warning LNK4006: DllMain already defined in MeshFace.obj; second definition ignored
+PluginMain.obj : warning LNK4006: "struct HINSTANCE__ * MhInstPlugin" (?MhInstPlugin@@3PEAUHINSTANCE__@@EA) already defined in MeshFace.obj; second definition ignored
+PluginMain.obj : warning LNK4006: MApiVersion already defined in MeshFace.obj; second definition ignored
+QKCmd.obj : warning LNK4006: DllMain already defined in MeshFace.obj; second definition ignored
+QKCmd.obj : warning LNK4006: "struct HINSTANCE__ * MhInstPlugin" (?MhInstPlugin@@3PEAUHINSTANCE__@@EA) already defined in MeshFace.obj; second definition ignored
+QKCmd.obj : warning LNK4006: MApiVersion already defined in MeshFace.obj; second definition ignored
+Relaxation.obj : warning LNK4006: DllMain already defined in MeshFace.obj; second definition ignored
+Relaxation.obj : warning LNK4006: "struct HINSTANCE__ * MhInstPlugin" (?MhInstPlugin@@3PEAUHINSTANCE__@@EA) already defined in MeshFace.obj; second definition ignored
+Relaxation.obj : warning LNK4006: MApiVersion already defined in MeshFace.obj; second definition ignored
+tessellate.obj : warning LNK4006: DllMain already defined in MeshFace.obj; second definition ignored
+tessellate.obj : warning LNK4006: "struct HINSTANCE__ * MhInstPlugin" (?MhInstPlugin@@3PEAUHINSTANCE__@@EA) already defined in MeshFace.obj; second definition ignored
+tessellate.obj : warning LNK4006: MApiVersion already defined in MeshFace.obj; second definition ignored
+     Creating library C:\Users\psire\Documents\QuickKnit\QuickKnit\Debug\x64\output\QuickKnit.lib and object C:\Users\psire\Documents\QuickKnit\QuickKnit\Debug\x64\output\QuickKnit.exp
+C:\Users\psire\Documents\QuickKnit\QuickKnit\Debug\x64\output\QuickKnit.mll : warning LNK4088: image being generated due to /FORCE option; image may not run
+  QuickKnit.vcxproj -> C:\Users\psire\Documents\QuickKnit\QuickKnit\Debug\x64\output\QuickKnit.mll
