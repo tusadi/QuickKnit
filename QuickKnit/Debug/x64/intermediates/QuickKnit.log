@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppClean.targets(76,5): warning : Access to the path 'c:\users\psire\documents\quickknit\quickknit\debug\x64\output\quickknit.mll' is denied.
 cl : Command line warning D9025: overriding '/EHs' with '/EHa'
   MeshFace.cpp
@@ -8,11 +9,89 @@ c:\users\psire\documents\quickknit\quickknit\quickknit\node.cpp(234): warning C4
           [
               T=float
           ]
+=======
+﻿cl : Command line warning D9025: overriding '/EHs' with '/EHa'
+>>>>>>> Stashed changes
   PluginMain.cpp
-  QKCmd.cpp
-  Relaxation.cpp
-  tessellate.cpp
+  PolyMeshFace.cpp
+  Stitch.cpp
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitch.cpp(26): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitch.cpp(57): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitch.cpp(58): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitch.cpp(61): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitch.cpp(69): warning C4018: '<': signed/unsigned mismatch
+  StitchLevelEdits.cpp
+  StitchMeshNode.cpp
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(115): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(116): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(117): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(118): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(119): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(120): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(121): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(122): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(123): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(124): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(125): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(126): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(127): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(128): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(129): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(130): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(131): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(132): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(133): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(134): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(148): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(149): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(150): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(151): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(152): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(153): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(154): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(155): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(156): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(157): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(158): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(159): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(160): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(161): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(162): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(163): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(164): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(165): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(166): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(167): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(181): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(182): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(183): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(184): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(185): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(186): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(187): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(188): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(189): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(190): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(191): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(192): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(193): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(213): warning C4305: 'return': truncation from 'int' to 'bool'
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(306): warning C4018: '<': signed/unsigned mismatch
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(362): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(368): warning C4018: '<': signed/unsigned mismatch
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(477): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(520): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(521): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(531): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(667): warning C4018: '<': signed/unsigned mismatch
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(760): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\tpura\desktop\cis-660\quickknit\quickknit\quickknit\stitchmeshnode.cpp(763): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  SubFace.cpp
   Generating Code...
-c:\users\psire\documents\quickknit\quickknit\quickknit\pluginmain.cpp(42): warning C4715: 'uninitializePlugin': not all control paths return a value
 LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
+<<<<<<< Updated upstream
 LINK : fatal error LNK1104: cannot open file 'C:\Users\psire\Documents\QuickKnit\QuickKnit\Debug\x64\output\QuickKnit.mll'
+=======
+     Creating library C:\Users\tpura\Desktop\CIS-660\QuickKnit\QuickKnit\Debug\x64\output\QuickKnit.lib and object C:\Users\tpura\Desktop\CIS-660\QuickKnit\QuickKnit\Debug\x64\output\QuickKnit.exp
+  QuickKnit.vcxproj -> C:\Users\tpura\Desktop\CIS-660\QuickKnit\QuickKnit\Debug\x64\output\QuickKnit.mll
+>>>>>>> Stashed changes

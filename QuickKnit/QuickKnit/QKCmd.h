@@ -1,5 +1,5 @@
 #pragma once
-#include "MayaIncludes.h"
+#include "mayaIncludes.h"
 
 class QKCmd : public MPxCommand
 {

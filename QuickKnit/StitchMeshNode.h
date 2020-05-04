@@ -1,21 +1,91 @@
-#pragma once
-#include "mayaIncludes.h"
+#include <string>
+#include <vector>
+#include <stdio.h>
+#include <string.h>
 
-class StitchMeshNode :public MPxNode
+#include "Stitch.h"
+#include "SubFace.h"
+#include "PolyMeshFace.h"
+
+#include <maya/MTime.h>
+#include <maya/MPlug.h>
+#include <maya/MPoint.h>
+#include <maya/MGlobal.h>
+#include <maya/MFnMesh.h>
+#include <maya/MMatrix.h>
+#include <maya/MPxNode.h>
+#include <maya/MObject.h>
+#include <maya/MFnMesh.h>
+#include <maya/MDagPath.h>
+#include <maya/MIOStream.h>
+#include <maya/MIntArray.h>
+#include <maya/MDataBlock.h>
+#include <maya/MFloatPoint.h>
+#include <maya/MFnMeshData.h>
+#include <maya/MItMeshEdge.h>
+#include <maya/MPointArray.h>
+#include <maya/MFnTransform.h>
+#include <maya/MDoubleArray.h>
+#include <maya/MFnStringData.h>
+#include <maya/MEventMessage.h>
+#include <maya/MSceneMessage.h>
+#include <maya/MEulerRotation.h>
+#include <maya/MItMeshPolygon.h>
+#include <maya/MSelectionList.h>
+#include <maya/MItSelectionList.h>
+#include <maya/MFloatPointArray.h>
+#include <maya/MFnUnitAttribute.h>
+#include <maya/MFnTypedAttribute.h>
+#include <maya/MFnNumericAttribute.h>
+#include <maya/MCallbackIdArray.h>
+
+using namespace std;
+
+enum {LOOP_SELECTION, TESSELLATION, STITCH_EDITING, YARN_GENERATION};
+enum {P, PY, YKY, KPK, D312P, K1Y, S, SK, X, Y1, K, KP, D12K, KYK, D123K};
+typedef vector<PolyMeshFace> PolyMeshFaceLoop;
+
+class StitchMeshNode : public MPxNode
 {
-	StitchMeshNode();
-	virtual ~StitchMeshNode();
+public:
 
-	//Node Functions 
+
+					StitchMeshNode() {};
+	virtual 		~StitchMeshNode() {};
 	virtual MStatus compute(const MPlug& plug, MDataBlock& data);
 	static  void*	creator();
 	static MStatus	initialize();
 
-	//Attributes 
-	static MTypeId nodeID;
-	static MObject time;
-	static MObject in_Mesh;
-	static MObject out_Mesh;
-	static MObject stitchSize;
-};
 
+	MFnMesh					*inputMeshFn;
+	MFnMesh					*oMeshFnShape;
+	MObject					 outputMeshObj;
+	MObject					 inputMeshObj;
+	vector<PolyMeshFaceLoop> MPolyMeshFaceLoops;
+	vector<SubFace>			 MSubFaces;
+
+
+	static MTypeId	id;
+	static MObject	attr_nodeStage;
+	static MObject	attr_inMesh;
+	static MObject	attr_outMesh;
+	static MObject	attr_stitchSize;
+	static MObject	inputMeshName;
+	static MObject	outputMeshName;
+
+	
+	int numLoopFaces;
+	MCallbackId callbackId;
+	
+	MIntArray faceLoopIndex;		
+	MIntArray faceLoopNumber;		
+
+
+	std::vector<Stitch> stitches;
+
+private:
+
+	MStatus TessellateInputMesh(float stitchSizeData, MFnMesh &outputMeshFn);
+	MStatus ColorByStitchType(void);
+	MStatus GenerateStitchCurves(float stitchSize);
+};

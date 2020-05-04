@@ -13,48 +13,56 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="MEL Files">
+      <UniqueIdentifier>{9c2cc03c-379e-4cf4-a261-5f40e01e521d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PluginMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="QKCmd.cpp">
+    <ClCompile Include="StitchMeshNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Node.cpp">
+    <ClCompile Include="PolyMeshFace.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MeshFace.cpp">
+    <ClCompile Include="Stitch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tessellate.cpp">
+    <ClCompile Include="StitchLevelEdits.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Relaxation.cpp">
+    <ClCompile Include="SubFace.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="QKCmd.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MayaIncludes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MathIncludes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Node.h">
+    <ClInclude Include="..\PolyMeshFace.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MeshFace.h">
+    <ClInclude Include="..\Stitch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="tessellate.h">
+    <ClInclude Include="..\StitchLevelEdits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\StitchMeshNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SubFace.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\stitchMesh.mel" />
+    <None Include="..\x64\Release\stitchMesh.mel">
+      <Filter>MEL Files</Filter>
+    </None>
+    <None Include="..\x64\Release\StitchMeshNode.mel">
+      <Filter>MEL Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

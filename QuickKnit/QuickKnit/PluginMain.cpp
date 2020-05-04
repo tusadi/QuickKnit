@@ -1,42 +1,68 @@
-#include "MayaIncludes.h"
-#include "QKCmd.h"
-#include "Node.h"
-#define NO_WARN_MBCS_MFC_DEPRECATION
+#include <maya/MPxCommand.h>
+#include <maya/MFnPlugin.h>
+#include <maya/MIOStream.h>
+#include <maya/MString.h>
+#include <maya/MArgList.h>
+#include <maya/MGlobal.h>
+#include <maya/MSimple.h>
+#include <maya/MDoubleArray.h>
+#include <maya/MPoint.h>
+#include <maya/MPointArray.h>
+#include <maya/MFnNurbsCurve.h>
+#include <maya/MDGModifier.h>
+#include <maya/MPlugArray.h>
+#include <maya/MVector.h>
+#include <maya/MFnDependencyNode.h>
+#include <maya/MStringArray.h>
+#include <list>
 
-MStatus initializePlugin(MObject obj)
+#include "StitchMeshNode.h"
+#include "StitchLevelEdits.h"
+
+MStatus initializePlugin( MObject obj )
 {
-	MStatus  status = MStatus::kSuccess;
-	MFnPlugin plugin(obj, "MyPlugin", "1.0", "Any");
-
+    MStatus   status = MStatus::kSuccess;
+    MFnPlugin plugin( obj, "QuickKnit", "1.0", "Any");
+	
 	// Register Command
-	status = plugin.registerCommand("QuickKnit", Node::creator);
+    status = plugin.registerCommand( "ChangeStitchTypeCmd", ChangeStitchTypeCmd::creator, ChangeStitchTypeCmd::syntaxCreator );
+    if (!status) {
+        status.perror("registerCommand");
+        return status;
+    }
+
+	status = plugin.registerNode("StitchMeshNode", StitchMeshNode::id,
+						 StitchMeshNode::creator, StitchMeshNode::initialize);
 	if (!status) {
-		status.perror("registerCommand");
+		status.perror("registerNode");
 		return status;
 	}
 
-	// Remove existing menu if it still exists
+	
 	MGlobal::executeCommand("if(`menu -ex StitchMeshesMenu`) deleteUI -m StitchMeshesMenu");
 
-	// Add menu to main Maya window
 	MGlobal::executeCommand("menu -l \"Stitch Meshes\" -p MayaWindow StitchMeshesMenu");
+	
+	MString menuCmd2 = "menuItem -l \"Create Stitch Mesh Node\" -command \"source \\\"" + plugin.loadPath() + "/StitchMeshNode.mel\\\"\"";
+	MGlobal::executeCommand(menuCmd2);
 
-	// You can run a MEL script from initializePlugin() to auto-register your MEL dialog boxes and menus
-	char buffer[2048];
-	sprintf_s(buffer, 2048, "source \"%s/stitchMesh\";", plugin.loadPath().asChar());
-	MGlobal::executeCommand(buffer, true);
 
-	return status;
+    return status;
 }
 
-MStatus uninitializePlugin(MObject obj)
+MStatus uninitializePlugin( MObject obj)
 {
-	MStatus status = MStatus::kSuccess;
-	MFnPlugin plugin(obj);
+    MStatus   status = MStatus::kSuccess;
+    MFnPlugin plugin( obj );
 
-	status = plugin.deregisterCommand("QuickKnit");
+	status = plugin.deregisterNode(StitchMeshNode::id);
 	if (!status) {
-		status.perror("deregisterCommand");
+		status.perror("deregisterNode");
 		return status;
 	}
+	MGlobal::executeCommand("if(`menu -ex StitchMeshesMenu`) deleteUI -m StitchMeshesMenu");
+
+    return status;
 }
+
+

@@ -1,0 +1,36 @@
+
+//----------------------------------------------------------------------//
+// Get selected shape as input mesh										//
+//----------------------------------------------------------------------//
+
+string $selection[] = `ls -sl`;
+string $shapes[] = `listRelatives -children -shapes $selection[0]`;
+string $inputMesh = $shapes[0];
+
+//----------------------------------------------------------------------//
+// Create transform/mesh/shader for output connections					//
+//----------------------------------------------------------------------//
+
+string $nodeTransform = `createNode -n StitchMeshTransform transform`;
+string $nodeShape = `createNode mesh -n StitchMeshShape -p $nodeTransform`;
+sets -add initialShadingGroup $nodeShape;
+
+//----------------------------------------------------------------------//
+// Create stitch meshes node and connect input mesh and output mesh		//
+//----------------------------------------------------------------------//
+
+$node = `createNode StitchMeshNode -n StitchMeshNode`;
+connectAttr ($inputMesh + ".outMesh") ($node + ".inputMesh");
+connectAttr ($node + ".outputMesh") ($nodeShape + ".inMesh");
+
+
+//----------------------------------------------------------------------//
+// DEBUG -- WILL BE USED FOR STORING NAMES OF INPUT/OUTPUT SHAPES		//
+//----------------------------------------------------------------------//
+
+print ("inputMesh = " + $inputMesh + " \n");
+print ("nodeShape = " + $nodeShape + " \n");
+setAttr ($node + ".inputMeshName") -type "string" $inputMesh;
+setAttr ($node + ".outputMeshName") -type "string" $nodeShape;
+setAttr -lock on ($node + ".inputMeshName");
+setAttr -lock on ($node + ".outputMeshName");
