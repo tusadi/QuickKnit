@@ -20,14 +20,12 @@ YarnCurve::YarnCurve(MPointArray corners)
 	CVweights.clear();
 }
 
-MStatus
-YarnCurve::addCV(MPoint cv)
+MStatus YarnCurve::addCV(MPoint cv)
 {
 	return addCV(cv.x, cv.y, cv.z);
 }
 
-MStatus
-YarnCurve::addCV(float cvX, float cvY, float cvZ)
+MStatus YarnCurve::addCV(float cvX, float cvY, float cvZ)
 {
 	MPoint cv(cvX, 0.0, cvZ);
 
@@ -77,13 +75,11 @@ YarnCurve::addCV(float cvX, float cvY, float cvZ)
 	return MStatus::kSuccess;
 }
 
-MStatus
-YarnCurve::addKnot(int k)
+MStatus YarnCurve::addKnot(int k)
 {
 	knotVector.push_back(k);
 	return MStatus::kSuccess;
 }
-
 
 
 Stitch::Stitch(void)
@@ -102,8 +98,7 @@ Stitch::~Stitch(void)
 {
 }
 
-MStatus
-Stitch::addYarnCurve(YarnCurve y)
+MStatus Stitch::addYarnCurve(YarnCurve y)
 {
 	YarnCurves.push_back(y);
 	return MStatus::kSuccess;

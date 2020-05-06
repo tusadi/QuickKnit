@@ -1,7 +1,3 @@
-// ==========================================================================
-// SitchMeshNode.h
-// ==========================================================================
-
 #include <maya/MGlobal.h>
 #include <maya/MTime.h>
 #include <maya/MFnMesh.h>
@@ -22,17 +18,14 @@
 #include <maya/MFnMeshData.h>
 
 #include <maya/MIOStream.h>
+#include<maya/MIntArray.h>
 
-//======================================================================================//
-// Class that extends MObject to account for necessary features							//
-// of polygonal input mesh faces after stitch direction decisions						//
-//======================================================================================//
 
 class PolyMeshFace : public MObject
 {
 public:
-				PolyMeshFace();
-				PolyMeshFace(MIntArray& cBkwd, MIntArray& cFwrd, int faceIndex);
+	PolyMeshFace();
+	PolyMeshFace(MIntArray& cBkwd, MIntArray& cFwrd, int faceIndex);
 	virtual	   ~PolyMeshFace();
 
 	MIntArray	courseEdgeBkwd;

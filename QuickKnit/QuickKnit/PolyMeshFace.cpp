@@ -1,6 +1,5 @@
 #include "PolyMeshFace.h"
 
-
 PolyMeshFace::PolyMeshFace(void)
 {
 }

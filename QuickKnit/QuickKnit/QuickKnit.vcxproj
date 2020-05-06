@@ -18,6 +18,25 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PolyMeshFace.h" />
+    <ClInclude Include="Stitch.h" />
+    <ClInclude Include="StitchLevelEdits.h" />
+    <ClInclude Include="QuickKnitNode.h" />
+    <ClInclude Include="SubFace.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PluginMain.cpp" />
+    <ClCompile Include="PolyMeshFace.cpp" />
+    <ClCompile Include="Stitch.cpp" />
+    <ClCompile Include="StitchLevelEdits.cpp" />
+    <ClCompile Include="QuickKnitNode.cpp" />
+    <ClCompile Include="SubFace.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Debug\x64\output\AEQuickKnitNodeTemplate.mel" />
+    <None Include="..\Debug\x64\output\QuickKnitNode.mel" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{25033DBA-1C1D-4266-995E-51AD6A4D8DA9}</ProjectGuid>
     <RootNamespace>QuickKnit</RootNamespace>
@@ -150,26 +169,6 @@
       <AdditionalOptions>/export:initializePlugin /export:uninitializePlugin %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="PluginMain.cpp" />
-    <ClCompile Include="PolyMeshFace.cpp" />
-    <ClCompile Include="Stitch.cpp" />
-    <ClCompile Include="StitchLevelEdits.cpp" />
-    <ClCompile Include="StitchMeshNode.cpp" />
-    <ClCompile Include="SubFace.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\PolyMeshFace.h" />
-    <ClInclude Include="..\Stitch.h" />
-    <ClInclude Include="..\StitchLevelEdits.h" />
-    <ClInclude Include="..\StitchMeshNode.h" />
-    <ClInclude Include="..\SubFace.h" />
-    <ClInclude Include="MathIncludes.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\x64\Release\stitchMesh.mel" />
-    <None Include="..\x64\Release\StitchMeshNode.mel" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

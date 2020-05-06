@@ -18,10 +18,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PolyMeshFace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Stitch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StitchLevelEdits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SubFace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QuickKnitNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="PluginMain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StitchMeshNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PolyMeshFace.cpp">
@@ -36,32 +50,15 @@
     <ClCompile Include="SubFace.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QuickKnitNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MathIncludes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\PolyMeshFace.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Stitch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\StitchLevelEdits.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\StitchMeshNode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SubFace.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\x64\Release\stitchMesh.mel">
+    <None Include="..\Debug\x64\output\QuickKnitNode.mel">
       <Filter>MEL Files</Filter>
     </None>
-    <None Include="..\x64\Release\StitchMeshNode.mel">
+    <None Include="..\Debug\x64\output\AEQuickKnitNodeTemplate.mel">
       <Filter>MEL Files</Filter>
     </None>
   </ItemGroup>

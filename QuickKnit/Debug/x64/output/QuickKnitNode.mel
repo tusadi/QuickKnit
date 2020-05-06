@@ -1,0 +1,18 @@
+string $selection[] = `ls -sl`;
+string $shapes[] = `listRelatives -children -shapes $selection[0]`;
+string $inputMesh = $shapes[0];
+
+string $nodeTransform = `createNode -n QuickKnitTransform transform`;
+string $nodeShape = `createNode mesh -n QuickKnitShape -p $nodeTransform`;
+sets -add initialShadingGroup $nodeShape;
+
+$node = `createNode QuickKnitNode -n QuickKnitNode`;
+connectAttr ($inputMesh + ".outMesh") ($node + ".inputMesh");
+connectAttr ($node + ".outputMesh") ($nodeShape + ".inMesh");
+
+print ("inputMesh = " + $inputMesh + " \n");
+print ("nodeShape = " + $nodeShape + " \n");
+setAttr ($node + ".inputMeshName") -type "string" $inputMesh;
+setAttr ($node + ".outputMeshName") -type "string" $nodeShape;
+setAttr -lock on ($node + ".inputMeshName");
+setAttr -lock on ($node + ".outputMeshName");
