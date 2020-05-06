@@ -263,25 +263,18 @@ void LabelEdgeRows(void * data)
 		}
 	}
 
-	//------------------------------------------------------------------------------------------------------------------//
-	// CASE 1: This edge is already bounded by face loops and there is no need to create a new one, or it is an			//
-	//		   interior edge with no adjacent loops																		//
-	//------------------------------------------------------------------------------------------------------------------//
+	// CASE 1: This edge is already bounded by face loops and there is no need to create a new one, or it is an	interior edge with no adjacent loops																		//
 	
 	if ((numBoundingRows == 2) || (numBoundingRows == 1 && inputMeshEdgeIt.onBoundary())
 		|| (numBoundingRows == 0 && !inputMeshEdgeIt.onBoundary()))
 	{
-		//stitchnode->callbackId = MEventMessage::addEventCallback("SelectionChanged", LabelEdgeRows, stitchnode);
 		LabelEdgeRows(stitchnode);
 		MString cmd = "select " + stitchnode->name();
 		MGlobal::executeCommand(cmd);
 		return;
 	}
 
-	//------------------------------------------------------------------------------------------------------------------//
-	// CASE 2: This edge is part of a boundary edge loop that is not yet associated with a face loop					//
-	//------------------------------------------------------------------------------------------------------------------//
-	
+	// CASE 2: This edge is part of a boundary edge loop that is not yet associated with a face loop
 	else if (numBoundingRows == 0 && inputMeshEdgeIt.onBoundary())
 	{
 		do {
@@ -305,8 +298,7 @@ void LabelEdgeRows(void * data)
 			{
 				inputMeshEdgeIt.setIndex(connectedEdges[i], p);
 
-				// if the connected edge is on the boundary, then
-				// it could be the next course edge in the loop
+				// if the connected edge is on the boundary, then it could be the next course edge in the loop
 				if (inputMeshEdgeIt.onBoundary())
 				{
 					int2 courseVertices;
@@ -320,8 +312,7 @@ void LabelEdgeRows(void * data)
 					}
 				}
 
-				// if it is not on the boundary of the mesh, it
-				// cannot be a course edge and must be a wale edge
+				// if it is not on the boundary of the mesh, it cannot be a course edge and must be a wale edge
 				else
 				{
 					int2 waleVertices; 
@@ -357,15 +348,13 @@ void LabelEdgeRows(void * data)
 		} while (inputMeshEdgeIt.index() != selectedEdgeIndex);
 	}
 		
-	//------------------------------------------------------------------------------------------------------------------//
-	// CASE 3: This edge is part of an interior edge loop and is bounded by existing face loops on only one side		//
-	//------------------------------------------------------------------------------------------------------------------//
+	// CASE 3: This edge is part of an interior edge loop and is bounded by existing face loops on only one side
+	
 	
 	else if (numBoundingRows == 1 && !inputMeshEdgeIt.onBoundary())
 	{
 		do {
-			// get course vertex endpoint indices in same direction as
-			// adjacent face's forward edge
+			// get course vertex endpoint indices in same direction as adjacent face's forward edge
 			stitchnode->MPolyMeshFaceLoops[adjFaceLoop][adjFaceIndex].getCourseEdgeFwrd(courseBkwdVtxs);
 			int nextAdjFaceIndex = incrementWithWrap(adjFaceIndex, stitchnode->MPolyMeshFaceLoops[adjFaceLoop].size());
 
@@ -436,16 +425,9 @@ void LabelEdgeRows(void * data)
 		} while (inputMeshEdgeIt.index() != selectedEdgeIndex);
 	}
 	
-	//------------------------------------------------------------------------------------------------------------------//
-	// Push new face loop onto node's vector and update the number of faces already accounted for by loops				//
-	//------------------------------------------------------------------------------------------------------------------//
 
 	stitchnode->MPolyMeshFaceLoops.push_back(faceLoop);
 	stitchnode->numLoopFaces += (int) faceLoop.size();
-	
-	//------------------------------------------------------------------------------------------------------------------//
-	// Display colors for selected face loop																			//
-	//------------------------------------------------------------------------------------------------------------------//
 
 	for (int i = 0; i < faceLoop.size(); i++) {
 
@@ -466,16 +448,11 @@ void LabelEdgeRows(void * data)
 		MGlobal::executeCommand("select -d");
 	}
 	
-	//------------------------------------------------------------------------------------------------------------------//
-	// Re-add callback to program if it is still needed																	//
-	//------------------------------------------------------------------------------------------------------------------//
+
 
 	if (stitchnode->numLoopFaces < inputMeshFn->numPolygons())
-		//stitchnode->callbackId = MEventMessage::addEventCallback("SelectionChanged", LabelEdgeRows, stitchnode);
 		LabelEdgeRows(stitchnode);
-	//------------------------------------------------------------------------------------------------------------------//
-	// Return from callback function																					//
-	//------------------------------------------------------------------------------------------------------------------//
+
 	
 	MString cmd = "select " + stitchnode->name();
 	MGlobal::executeCommand(cmd);
