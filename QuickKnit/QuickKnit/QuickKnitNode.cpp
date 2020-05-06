@@ -781,7 +781,7 @@ MStatus QuickKnitNode::compute(const MPlug& plug, MDataBlock& data)
 		
 		switch (nodeStage) {
 
-			//User interaction stage for selecting edge loops in direction of stitch
+			// User interaction stage for selecting edge loops in direction of stitch
 
 		case (LOOP_SELECTION):
 			MGlobal::executeCommand("selectType -pe 1");
